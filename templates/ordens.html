@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+<h2>Ordens de Serviço</h2>
+<a href="{{ url_for('ordem_nova') }}" class="btn btn-success mb-3">Nova Ordem de Serviço</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Descrição</th>
+            <th>Status</th>
+            <th>Valor Total</th>
+            <th>Veículo</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for ordem in ordens %}
+        <tr>
+            <td>{{ ordem.id }}</td>
+            <td>{{ ordem.descricao }}</td>
+            <td>{{ ordem.status }}</td>
+            <td>{{ ordem.valor_total }}</td>
+            <td>{{ ordem.veiculo.modelo }} ({{ ordem.veiculo.placa }})</td>
+            <td>
+                <a href="{{ url_for('ordem_editar', id=ordem.id) }}" class="btn btn-primary btn-sm">Editar</a>
+                <form action="{{ url_for('ordem_deletar', id=ordem.id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Tem certeza?');">
+                    <button class="btn btn-danger btn-sm" type="submit">Remover</button>
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

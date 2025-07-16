@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+<h2>{{ acao }} Cliente</h2>
+<form method="POST">
+    <div class="mb-3">
+        <label class="form-label">Nome</label>
+        <input class="form-control" name="nome" required value="{{ cliente.nome if cliente else '' }}">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Telefone</label>
+        <input class="form-control" name="telefone" required value="{{ cliente.telefone if cliente else '' }}">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input class="form-control" name="email" value="{{ cliente.email if cliente else '' }}">
+    </div>
+    <button class="btn btn-success" type="submit">Salvar</button>
+    <a href="{{ url_for('clientes') }}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

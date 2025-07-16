@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+<div class="text-center">
+    <h1 class="mb-4">Bem-vindo ao Sistema da Oficina!</h1>
+    <p class="lead mb-4">Gerencie clientes, veículos, ordens de serviço e estoque de peças/insumos.</p>
+    {% if avisos_estoque %}
+    <div class="alert alert-warning">
+        <strong>Atenção!</strong> Alguns itens estão com baixo estoque:
+        <ul>
+            {% for item in avisos_estoque %}
+            <li>{{ item.nome }} ({{ item.quantidade }} em estoque)</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+    <div class="row justify-content-center">
+        <div class="col-md-3 mb-3">
+            <a href="{{ url_for('clientes') }}" class="btn btn-lg btn-outline-primary w-100">Clientes</a>
+        </div>
+        <div class="col-md-3 mb-3">
+            <a href="{{ url_for('veiculos') }}" class="btn btn-lg btn-outline-primary w-100">Veículos</a>
+        </div>
+        <div class="col-md-3 mb-3">
+            <a href="{{ url_for('ordens') }}" class="btn btn-lg btn-outline-primary w-100">Ordens de Serviço</a>
+        </div>
+        <div class="col-md-3 mb-3">
+            <a href="{{ url_for('estoque') }}" class="btn btn-lg btn-outline-primary w-100">Estoque</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

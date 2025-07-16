@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+<h2>Clientes</h2>
+<a href="{{ url_for('cliente_novo') }}" class="btn btn-success mb-3">Novo Cliente</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Telefone</th>
+            <th>Email</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for cliente in clientes %}
+        <tr>
+            <td>{{ cliente.id }}</td>
+            <td>{{ cliente.nome }}</td>
+            <td>{{ cliente.telefone }}</td>
+            <td>{{ cliente.email }}</td>
+            <td>
+                <a href="{{ url_for('cliente_editar', id=cliente.id) }}" class="btn btn-primary btn-sm">Editar</a>
+                <form action="{{ url_for('cliente_deletar', id=cliente.id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Tem certeza?');">
+                    <button class="btn btn-danger btn-sm" type="submit">Remover</button>
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

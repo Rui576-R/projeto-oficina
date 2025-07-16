@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+<h2>{{ acao }} Item de Estoque</h2>
+<form method="POST">
+    <div class="mb-3">
+        <label class="form-label">Nome</label>
+        <input class="form-control" name="nome" required value="{{ item.nome if item else '' }}">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Descrição</label>
+        <input class="form-control" name="descricao" value="{{ item.descricao if item else '' }}">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Quantidade</label>
+        <input class="form-control" name="quantidade" type="number" min="0" required value="{{ item.quantidade if item else '0' }}">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Estoque Mínimo</label>
+        <input class="form-control" name="estoque_minimo" type="number" min="0" required value="{{ item.estoque_minimo if item else '1' }}">
+    </div>
+    <button class="btn btn-success" type="submit">Salvar</button>
+    <a href="{{ url_for('estoque') }}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}
