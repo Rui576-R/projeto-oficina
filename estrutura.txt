@@ -1,0 +1,31 @@
+.
+├── app.py
+├── estrutura.txt
+├── instance
+├── LICENSE
+├── models.py
+├── myenv
+│   ├── bin
+│   ├── include
+│   ├── lib
+│   ├── lib64 -> lib
+│   └── pyvenv.cfg
+├── README.md
+├── requirements.txt
+├── static
+│   ├── manifest.json
+│   ├── oficina-icon.png
+│   └── service-worker.js
+└── templates
+    ├── base.html
+    ├── cliente_form.html
+    ├── clientes.html
+    ├── estoque_form.html
+    ├── estoque.html
+    ├── inicio.html
+    ├── ordem_form.html
+    ├── ordens.html
+    ├── veiculo_form.html
+    └── veiculos.html
+
+9 directories, 20 files
